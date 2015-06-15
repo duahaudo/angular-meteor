@@ -1,6 +1,8 @@
 angular
 	.module('app.main', [
-		'app.parties'
+		'app.parties',
+		'app.chat',
+		'app.home'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		$locationProvider.html5Mode(true);
@@ -21,5 +23,4 @@ angular
 					}
 				}
 			});
-		$urlRouterProvider.otherwise("/parties");
 	});
