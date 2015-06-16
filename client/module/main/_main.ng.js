@@ -1,7 +1,7 @@
 angular
 	.module('app.main', [
 		'app.parties',
-		'app.chat',
+		'app.message',
 		'app.home'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
