@@ -5,7 +5,7 @@ angular
 		'app.home'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-		$locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(false).hashPrefix('!');
 		var baseUrl = 'client/module/main/view/';
 		$stateProvider
 			.state('main', {
@@ -14,6 +14,9 @@ angular
 				views: {
 					'header': {
 						templateUrl: baseUrl + 'header.ng.html'
+					},
+					'left-sidebar': {
+						templateUrl: baseUrl + 'left-sidebar.ng.html'
 					},
 					'main': {
 						templateUrl: baseUrl + 'main.ng.html'
