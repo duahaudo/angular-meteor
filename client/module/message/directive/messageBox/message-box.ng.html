@@ -1,3 +1,23 @@
 <h2>
 	Message Box
 </h2>
+<div class="col-xs-12 col-md-6">
+	<div class="col-xs-12">
+		<label class="control-lable col-xs-4">Your name</label>
+		<div class="col-xs-8">
+			<input class="form-control" type="text" placeholder="input your name here" ng-model="myname" />
+		</div>
+	</div>
+	<div class="message-wrapper col-xs-12">
+		<div class="message" ng-repeat="msg in messages track by $index" ng-class="{'text-right': msg.owner !== $parent.myname}">
+			<strong ng-class="{'pull-right': msg.owner !== $parent.myname}">{{msg.owner}}</strong>
+			<span>{{msg.message}}</span>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<input class="form-control" type="text" placeholder="input your message here" ng-model="message" />
+		<button ng-click="addMessage()">
+			Send
+		</button>
+	</div>
+</div>

@@ -1,1 +1,1 @@
-Message = new Mongo.Collection("message");
+Messages = new Mongo.Collection("message");

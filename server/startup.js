@@ -20,4 +20,8 @@ Meteor.startup(function () {
             Parties.insert(parties[i]);
         }
     }
+	
+	if (Messages.find().count() > 0) {
+		Messages.remove({});
+	}
 });

@@ -5,8 +5,19 @@ angular
 
 		}
 
-		function controller($scope) {
-
+		function controller($scope, $meteor) {
+			$scope.messages = $meteor.collection(Messages);
+			
+			$scope.myname = undefined;
+			$scope.message = undefined;
+			$scope.addMessage = function() {
+				$scope.messages.push({
+					owner: $scope.myname,
+					message: $scope.message,
+					created: new Date()
+				});
+				$scope.message = undefined;
+			};
 		}
 
 		return {
