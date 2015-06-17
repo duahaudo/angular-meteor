@@ -8,10 +8,12 @@ angular
 		function controller($scope, $meteor) {
 			$scope.messages = $meteor.collection(Messages);
 			
+			$scope.roomId = undefined;
 			$scope.myname = undefined;
 			$scope.message = undefined;
 			$scope.addMessage = function() {
 				$scope.messages.push({
+					roomId: $scope.roomId,
 					owner: $scope.myname,
 					message: $scope.message,
 					created: new Date()

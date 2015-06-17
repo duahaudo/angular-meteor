@@ -1,0 +1,20 @@
+<section ui-view="header"></section>
+<section>
+	<section class="hbox stretch">
+		<aside class="bg-black aside-md hidden-print hidden-xs" id="nav" ui-view="left-sidebar"></aside>
+		<section id="content">
+			<section class="hbox stretch">
+				<section>
+					<section class="vbox">
+						<section class="scrollable padder">
+							<section class="m-b-md" ui-view="breadcrumb"></section>
+							<div ui-view="main" class=""></div>
+						</section>
+					</section>
+				</section>
+				<aside class="aside-md bg-black hide" id="sidebar" ui-view="right-sidebar"></aside>
+			</section>
+		</section>
+	</section>
+</section>
+<section ui-view="footer"></section>
