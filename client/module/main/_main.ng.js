@@ -44,6 +44,12 @@ angular
 				}
 			});
 	})
-	.run(function() {
-
+	.run(function($rootScope) {
+		$rootScope.pageTitle = undefined;
+		$rootScope.pageDescriptions = undefined;
+	
+		$rootScope.$on('update-page-title', function (ev, title, descriptions) {
+			$rootScope.pageTitle = title;
+			$rootScope.pageDescriptions = descriptions;
+		});
 	});
