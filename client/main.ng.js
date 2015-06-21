@@ -3,6 +3,7 @@ angular
 		"angular-meteor",
 		'ui.router',
 		'app.main',
+		'app.account',
 		'app.login'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {

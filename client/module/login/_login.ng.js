@@ -8,11 +8,11 @@ angular
 			.state('signin', {
 				url: '/sign-in',
 				templateUrl: 'client/module/login/view/signin.ng.html',
-				controller: 'signinController'
+				controller: 'login.signinController'
 			})
 			.state('signup', {
 				url: '/sign-up',
 				templateUrl: 'client/module/login/view/signup.ng.html',
-				controller: 'signupController'
+				controller: 'login.signupController'
 			});
 	});

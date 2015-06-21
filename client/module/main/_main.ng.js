@@ -2,7 +2,8 @@ angular
 	.module('app.main', [
 		'app.parties',
 		'app.message',
-		'app.home'
+		'app.home',
+		'main.controller'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		var baseUrl = 'client/module/main/view/';
@@ -24,7 +25,8 @@ angular
 				views: {
 					'': {},
 					'header@wrapper': {
-						templateUrl: baseUrl + 'header.ng.html'
+						templateUrl: baseUrl + 'header.ng.html',
+						controller: 'main.headerController'
 					},
 					'left-sidebar@wrapper': {
 						templateUrl: baseUrl + 'left-sidebar.ng.html'

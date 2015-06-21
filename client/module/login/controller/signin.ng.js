@@ -1,12 +1,12 @@
 angular
 	.module('login.controller')
-	.controller('signinController', function($scope, $meteor, $state, loginService) {
+	.controller('login.signinController', function($scope, $meteor, $state, accountService) {
 		$scope.email = undefined;
 		$scope.password = undefined;
 		$scope.error = undefined;
 	
 		$scope.signin = function () {
-			loginService.signin($scope.email, $scope.password).then(function (){
+			accountService.signin($scope.email, $scope.password).then(function (){
 				$state.go('wrapper.main.home');
 			}).catch(function (error) {
 				console.log(error);
