@@ -4,7 +4,8 @@ angular
 		'ui.router',
 		'app.main',
 		'app.account',
-		'app.login'
+		'app.login',
+		'app.common'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		$locationProvider.html5Mode(false).hashPrefix('!');
@@ -18,12 +19,6 @@ angular
 				$state.go('login');
 			}
 		});
-
-		// setup screen title
-		$rootScope.screenTitle = 'Home';
-		$rootScope.setScreenTitle = function(title) {
-			$rootScope.screenTitle = title;
-		};
-
+	
 		// $state.go('wrapper.main.home');
 	});

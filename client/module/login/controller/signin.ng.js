@@ -1,8 +1,8 @@
 angular
 	.module('login.controller')
 	.controller('login.signinController', function($scope, $meteor, $state, accountService) {
-		$scope.email = undefined;
-		$scope.password = undefined;
+		$scope.email = 'user1@gmail.com';
+		$scope.password = '123456';
 		$scope.error = undefined;
 	
 		$scope.signin = function () {
