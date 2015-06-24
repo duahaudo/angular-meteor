@@ -1,5 +1,5 @@
 angular
 	.module('message.controller')
 	.controller('messageController', function($scope) {
-		$scope.setScreenTitle('Messages');
+		$scope.$emit('update-page-title', 'Messages', 'real time message');
 	});
