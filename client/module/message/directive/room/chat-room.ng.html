@@ -7,9 +7,9 @@
 	</div>
 	<div class="col-xs-12">
 		<ul class="list-group" ng-hide="chatRooms.length === 0">
-			<li class="list-group-item" ng-repeat="room in chatRooms track by $index | orderBy:'name'">
-				<a href="javascript:;" ng-click="selectRoom(room)">{{room.name}}</a>
-				<a href="javascript:;" ng-click="deleteRoom(room)" class="pull-right"><i class="fa fa-times"></i></a>
+			<li class="list-group-item" ng-repeat="room in chatRooms track by $index | orderBy:'name'" ng-class="{active: isSelected(room)}" ng-click="selectRoom(room)">
+				<a href="javascript:;">{{room.name}}</a>
+				<a href="javascript:;" ng-show="room.owner === userId" ng-click="deleteRoom(room)" class="pull-right"><i class="fa fa-times"></i></a>
 			</li>
 		</ul>
 	</div>

@@ -1,4 +1,5 @@
 angular
 	.module('app.account', [
-		'account.service'
+		'account.service',
+		'account.filter'
 	]);

@@ -34,7 +34,16 @@ angular
 				$state.go('signin');
 			},
 			currentUser: function() {
-				return Meteor.user();
+				var user = Meteor.user();
+				if (!user) {
+					this.signout();
+					return {};
+				}
+				return user;
+			},
+			getUser: function (userId) {
+				var user = Meteor.users.find({_id: userId}, {limit: 1}).fetch();
+				return user[0];
 			}
 		};
 	});

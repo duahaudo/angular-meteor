@@ -1,4 +1,5 @@
 angular
 	.module('app.common', [
-		'common.service'
+		'common.service',
+		'common.filter'
 	]);

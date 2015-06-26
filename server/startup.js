@@ -21,7 +21,7 @@ Meteor.startup(function () {
         }
     }
 	
-	if (Messages.find().count() > 0) {
-		Messages.remove({});
-	}
+	//if (Messages.find().count() > 0) {
+	//	Messages.remove({});
+	//}
 });

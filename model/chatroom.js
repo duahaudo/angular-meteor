@@ -9,10 +9,8 @@ ChatRooms.allow({
 	}
 });
 Meteor.methods({
-	remove: function (userId, room) {
-		check(userId, String);
-		console.log('Remove Method');
-		if (this.userId === room.owner) {
+	remove: function (room) {
+		if (Meteor.userId() === room.owner) {
 			ChatRooms.remove(room);
 			return true;
 		}
