@@ -4,16 +4,6 @@ ChatRooms.allow({
 		return true;
 	},
 	remove: function(userId, room) {
-		console.log('Allow');
 		return false; // does not allow delete from client
-	}
-});
-Meteor.methods({
-	remove: function (room) {
-		if (Meteor.userId() === room.owner) {
-			ChatRooms.remove(room);
-			return true;
-		}
-		return false;
 	}
 });

@@ -15,7 +15,5 @@ Meteor.publish('get-messages-by-room', function (roomId) {
 			}]
 		}]
 	});
-	console.log('get message by room id');
-	console.log(result.fetch());
 	return result;
 });

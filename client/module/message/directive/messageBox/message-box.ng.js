@@ -4,33 +4,39 @@ angular
 		function link(scope, element, attrs) {
 
 		}
+	
+		function scrollToBottom() {
+			$('.scrollable.wrapper').scrollTop($('.scrollable.wrapper').height());
+		}
 
-		function controller($scope, $meteor, accountService) {
-			$scope.userId = accountService.currentUser()._id;
-			//$scope.messages = $scope.$meteorCollection(Messages).subscribe('get-messages-by-room', $scope.roomId);
-			
-			//$meteor.autorun($scope, function() {
-			//	$meteor.subscribe('get-chat-room-by-id', $scope.getReactively('roomId')).then(function () {
-			//		$scope.room = $scope.$meteorCollection(ChatRooms));
-			//		console.log($scope.room);
-			//	});
-			//});
+		function controller($scope, $meteor, $timeout, accountService) {
+			$scope.currentUser = accountService.currentUser();
 			
 			$meteor.autorun($scope, function () {
 				$scope.messages = $scope.$meteorCollection(Messages, false).subscribe('get-messages-by-room', $scope.getReactively('room._id'));
-				console.log('change room');
+				$timeout(scrollToBottom, 1000);
 			});
 			
 			$scope.myname = undefined;
 			$scope.message = undefined;
 			$scope.addMessage = function() {
+				if (!$scope.message) {
+					return;
+				}
+				// save new message
 				$scope.messages.save({
 					roomId: $scope.room._id,
-					owner: $scope.userId,
+					owner: {
+						id: $scope.currentUser._id,
+						name: $scope.currentUser.username
+					},
 					message: $scope.message,
 					created: new Date()
 				});
+				// clear textbox
 				$scope.message = undefined;
+				// scroll to bottom
+				$timeout(scrollToBottom, 500);
 			};
 		}
 

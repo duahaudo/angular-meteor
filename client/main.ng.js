@@ -10,6 +10,9 @@ angular
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 		$locationProvider.html5Mode(false).hashPrefix('!');
 		$urlRouterProvider.otherwise('/sign-in');
+	
+		// for template
+		$('html').addClass('app');
 	})
 	.run(function($rootScope, $state) {
 		$rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {

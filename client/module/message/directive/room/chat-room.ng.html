@@ -1,19 +1,33 @@
-<div class="row">
-	<div class="col-xs-12">
-		<h4  style="background: #177bbb; color: #fff; margin: 0; padding: 15px;">
-			Rooms
-			<a href="javascript:;" class="pull-right" data-toggle="modal" data-target="#add-new-room-modal"><i class="fa fa-plus"></i></a>
-		</h4>
-	</div>
-	<div class="col-xs-12">
-		<ul class="list-group" ng-hide="chatRooms.length === 0">
-			<li class="list-group-item" ng-repeat="room in chatRooms track by $index | orderBy:'name'" ng-class="{active: isSelected(room)}" ng-click="selectRoom(room)">
-				<a href="javascript:;">{{room.name}}</a>
-				<a href="javascript:;" ng-show="room.owner === userId" ng-click="deleteRoom(room)" class="pull-right"><i class="fa fa-times"></i></a>
+<section class="vbox animated fadeInRight">
+	<section class="scrollable">
+		<h4 class="font-thin text-white padder m-b-none m-t">Chat</h4>
+		<div class="wrapper text-u-c">
+			<strong>Rooms</strong>
+			<a href="javascript:;" class="pull-right" data-toggle="modal" data-target="#add-new-room-modal">
+				<i class="fa fa-plus"></i>
+			</a>
+		</div>
+		<ul class="list-group no-bg no-borders auto m-b-none">
+			<li class="list-group-item" ng-repeat="room in chatRooms track by $index | orderBy:'name'" ng-class="{active: isSelectedRoom(room)}" ng-click="selectRoom(room)">
+				<div class="media">
+					<a href="javascript:;" ng-show="room.owner === userId" ng-click="deleteRoom(room)" class="pull-right">
+						<i class="fa fa-times"></i>
+					</a>
+					<a href="javascript:;" ng-show="room.owner === userId" ng-click="settingRoom($event, room)" class="pull-right" data-toggle="modal" data-target="#manage-room-users">
+						<i class="fa fa-cog"></i>
+					</a>
+					<div class="media-body">
+						<div>
+							<a href="javascript:;"><i class="fa fa-comments"></i> {{room.name}}</a> <span class="badge badge-empty">4</span>
+						</div>
+						<small class="text-muted pull-right"></small>
+					</div>
+				</div>
 			</li>
 		</ul>
-	</div>
-</div>
+	</section>
+</section>
+
 <div class="modal fade" id="add-new-room-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -46,6 +60,39 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addRoom()"><i class="fa fa-check"></i> Save</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade" id="manage-room-users">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Manage Users</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<lablel class="control-label col-xs-12 col-md-3">
+							Users
+						</lablel>
+						<div class="checkbox col-xs-12 col-md-6" ng-repeat="user in inviteUsers track by user._id" ng-class="{'col-md-offset-3': $index !== 0}">
+							<label>
+								<input type="checkbox" ng-model="user.checked" ng-disabled="user._id === userId" /> {{ user.username }}
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="inviteUser()"><i class="fa fa-check"></i> Ok</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
 			</div>
 		</div>

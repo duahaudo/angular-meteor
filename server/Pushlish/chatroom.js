@@ -1,6 +1,5 @@
 // server: publish the current size of a collection
-Meteor.publish("all-chat-rooms", function() {
-	console.log(this.userId);
+Meteor.publish("all-chat-rooms-by-user-id", function(userId) {
 	var result = ChatRooms.find({
 		$or: [{
 			$and: [{
@@ -12,9 +11,11 @@ Meteor.publish("all-chat-rooms", function() {
 			}]
 		}, {
 			$and: [{
-				owner: this.userId
+				users: {
+					$in: [userId]
+				}
 			}, {
-				owner: {
+				users: {
 					$exists: true
 				}
 			}]
@@ -25,14 +26,13 @@ Meteor.publish("all-chat-rooms", function() {
 
 Meteor.publish("get-chat-room-by-id", function(roomId) {
 	var result = ChatRooms.find({
-		_id: roomId
-	}, {
-		fields: {
-			_id: 1,
-			name: 1
-		}
-	});
-	console.log(result.fetch());
+			_id: roomId
+		}, {
+			fields: {
+				_id: 1,
+				name: 1
+			}
+		});
 	return result;
 });
 

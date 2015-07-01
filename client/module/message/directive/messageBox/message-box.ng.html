@@ -1,33 +1,35 @@
-<header class="header bg-light lt b-b b-light">
-	<p ng-show="!!room.name">
-		Chat in <strong>{{room.name}}</strong>
-	</p>
-</header>
-<section class="w-f scrollable wrapper">
-	<section class="chat-list">
-		<article class="chat-item left" ng-repeat="msg in messages track by $index" ng-class="{'left': msg.owner === userId, 'right': msg.owner !== userId}">
-			<a href="javascript:;" class="thumb-sm avatar" ng-class="{'pull-left': msg.owner === userId, 'pull-right': msg.owner !== userId}">
-				{{msg.owner | username}}
+<section class="vbox">
+	<header class="header bg-light lt b-b b-light" ng-show="!!room.name">
+		<p>
+			Chat in <strong>{{room.name}}</strong>
+		</p>
+	</header>
+	<section class="w-f scrollable wrapper">
+		<section class="chat-list">
+			<article class="chat-item left" ng-repeat="msg in messages track by $index" ng-class="{'left': msg.owner.id === currentUser._id, 'right': msg.owner.id !== currentUser._id}">
+				<a href="javascript:;" class="thumb-sm avatar" ng-class="{'pull-left': msg.owner === currentUser._id, 'pull-right': msg.owner.id !== currentUser._id}">
+				{{msg.owner.name}}
 			</a>
-			<section class="chat-body">
-				<div class="panel b-light text-sm m-b-none">
-					<div class="panel-body">
-						<span class="arrow" ng-class="{'left': msg.owner === userId, 'right': msg.owner !== userId}"></span>
-						<p class="m-b-none">{{msg.message}}</p>
+				<section class="chat-body">
+					<div class="panel b-light text-sm m-b-none">
+						<div class="panel-body">
+							<span class="arrow" ng-class="{'left': msg.owner.id === currentUser._id, 'right': msg.owner.id !==  currentUser._id}"></span>
+							<p class="m-b-none">{{msg.message}}</p>
+						</div>
 					</div>
-				</div>
-				<small class="text-muted"><i class="fa fa-ok text-success"></i> {{msg.created | timeCounter}} ago</small>
-			</section>
-		</article>
+					<small class="text-muted"><i class="fa fa-ok text-success"></i> {{msg.created | timeCounter}}</small>
+				</section>
+			</article>
+		</section>
 	</section>
-</section>
-<footer class="footer bg-light lt b-t b-light">
-	<form action="" class="m-t-sm">
-		<div class="input-group">
-			<input type="text" class="form-control input-sm rounded" placeholder="Say something" ng-model="message">
-			<span class="input-group-btn">
+	<footer class="footer bg-light lt b-t b-light" ng-show="!!room.name">
+		<form action="" class="m-t-sm">
+			<div class="input-group">
+				<input type="text" class="form-control input-sm rounded" placeholder="Say something" ng-model="message">
+				<span class="input-group-btn">
 				<button class="btn btn-sm btn-danger font-bold btn-rounded" type="button"  ng-click="addMessage()">Send</button>
 			</span>
-		</div>
-	</form>
-</footer>
+			</div>
+		</form>
+	</footer>
+</section>

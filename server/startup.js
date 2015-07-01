@@ -24,4 +24,8 @@ Meteor.startup(function () {
 	//if (Messages.find().count() > 0) {
 	//	Messages.remove({});
 	//}
+	
+	//Meteor.users.remove({username: undefined});
+	//ChatRooms.remove({});
+	//Messages.remove({});
 });
