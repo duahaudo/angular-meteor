@@ -3,6 +3,7 @@ angular
 		'app.parties',
 		'app.message',
 		'app.home',
+		'app.news',
 		'main.controller'
 	])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -14,14 +15,8 @@ angular
 				templateUrl: baseUrl + 'wrapper.ng.html'
 			})
 			.state('wrapper.main', {
-				url: '/main',
+				url: '/app',
 				abstract: true,
-				resolve: {
-					"currentUser": function($meteor) {
-						//return $meteor.requireUser();
-						return true;
-					}
-				},
 				views: {
 					'': {},
 					'header@wrapper': {
@@ -29,7 +24,8 @@ angular
 						controller: 'main.headerController'
 					},
 					'left-sidebar@wrapper': {
-						templateUrl: baseUrl + 'left-sidebar.ng.html'
+						templateUrl: baseUrl + 'left-sidebar.ng.html',
+						controller: 'main.leftSidebarController'
 					},
 					'right-sidebar@wrapper': {
 						templateUrl: baseUrl + 'right-sidebar.ng.html'

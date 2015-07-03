@@ -23,11 +23,11 @@
 		</section>
 	</section>
 	<footer class="footer bg-light lt b-t b-light" ng-show="!!room.name">
-		<form action="" class="m-t-sm">
+		<form ng-submit="addMessage()" class="m-t-sm">
 			<div class="input-group">
 				<input type="text" class="form-control input-sm rounded" placeholder="Say something" ng-model="message">
 				<span class="input-group-btn">
-				<button class="btn btn-sm btn-danger font-bold btn-rounded" type="button"  ng-click="addMessage()">Send</button>
+				<button class="btn btn-sm btn-danger font-bold btn-rounded" type="button" ng-click="addMessage()">Send</button>
 			</span>
 			</div>
 		</form>
